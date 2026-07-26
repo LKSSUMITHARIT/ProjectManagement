@@ -1,0 +1,517 @@
+# Review Rounds
+
+> **Purpose**
+>
+> Review Rounds represent a complete review iteration during the lifecycle of a Task.
+>
+> Every time work is submitted for review, a Review Round is created (or continued) to maintain complete traceability of reviews, feedback, deliverables, approvals, and implementation history.
+>
+> Review Rounds allow the system to answer questions such as:
+>
+> - How many times was this asset reviewed?
+> - What changed between reviews?
+> - Which feedback belonged to each review cycle?
+> - Which deliverable version was approved?
+
+---
+
+# Overview
+
+A Review Round groups together every artifact generated during a review cycle.
+
+A Review Round contains:
+
+- Reviews
+- Feedback Items
+- Deliverable Versions
+- Review Decisions
+- Review Attachments
+- Review Discussions
+- Linked SubTasks
+- Timeline Events
+
+---
+
+# Objectives
+
+Review Rounds provide:
+
+- Complete review history
+- Production traceability
+- Version comparison
+- Client communication history
+- Rework analysis
+- Approval history
+- Audit compliance
+
+---
+
+# Architecture
+
+```text
+Production
+
+↓
+
+Review Round
+
+├── Review(s)
+├── Feedback
+├── Deliverables
+├── Discussions
+├── Decisions
+└── Timeline
+
+↓
+
+Production
+
+↓
+
+Next Review Round
+```
+
+---
+
+# Round Lifecycle
+
+```text
+Created
+
+↓
+
+Review Started
+
+↓
+
+Feedback
+
+↓
+
+Implementation
+
+↓
+
+Verification
+
+↓
+
+Completed
+```
+
+If another review is required:
+
+↓
+
+New Review Round
+
+---
+
+# Review Round Numbering
+
+Each Task maintains its own numbering.
+
+Example
+
+```
+Task PM-1024
+
+Round 1
+
+Round 2
+
+Round 3
+
+Round 4
+```
+
+Round numbers are never reused.
+
+---
+
+# Review Types within a Round
+
+One Round may contain multiple review stages.
+
+Example
+
+```
+Round 3
+
+↓
+
+Lead Review
+
+↓
+
+Final Review
+
+↓
+
+QC
+
+↓
+
+Client Review
+```
+
+---
+
+# Deliverables
+
+Each Round references one or more deliverables.
+
+Example
+
+```
+Round 2
+
+↓
+
+Version 1.2
+
+↓
+
+Version 1.3
+
+↓
+
+Version 1.4
+```
+
+---
+
+# Feedback Association
+
+Every Feedback Item belongs to exactly one Review Round.
+
+Example
+
+```
+Round 2
+
+↓
+
+Feedback 101
+
+Feedback 102
+
+Feedback 103
+```
+
+Round 3 creates new Feedback Items.
+
+---
+
+# SubTask Association
+
+SubTasks created from Feedback record:
+
+- Review Round
+- Feedback Source
+- SubTask Type
+
+Example
+
+```
+Round 2
+
+↓
+
+Feedback
+
+↓
+
+Lead Analysis
+
+↓
+
+FR Fix Task
+```
+
+---
+
+# Round Decisions
+
+Possible outcomes
+
+- Approved
+- Minor Fix
+- Major Fix
+- Rejected
+- Cancelled
+
+---
+
+# Round Completion
+
+A Review Round is completed when:
+
+- All Reviews finished
+- Feedback recorded
+- Decision finalized
+
+Implementation may continue after completion.
+
+---
+
+# Round History
+
+Each Round stores:
+
+- Round Number
+- Started On
+- Completed On
+- Reviewer(s)
+- Decision
+- Deliverables
+- Feedback Count
+- SubTask Count
+
+History is immutable.
+
+---
+
+# Review Progression
+
+Example
+
+```text
+Round 1
+
+↓
+
+Major Fix
+
+↓
+
+Production
+
+↓
+
+Round 2
+
+↓
+
+Minor Fix
+
+↓
+
+Production
+
+↓
+
+Round 3
+
+↓
+
+Approved
+```
+
+---
+
+# Deliverable Comparison
+
+Future versions may compare:
+
+- Images
+- Videos
+- Documents
+- 3D Assets
+
+Across different Review Rounds.
+
+---
+
+# Timeline
+
+Every Round generates Timeline events.
+
+Example
+
+```
+Round Created
+
+↓
+
+Reviewer Assigned
+
+↓
+
+Review Started
+
+↓
+
+Feedback Added
+
+↓
+
+Review Approved
+```
+
+---
+
+# Attachments
+
+Each Round supports:
+
+- Images
+- Videos
+- PDFs
+- Documents
+- Markups
+- Audio
+- Reference Files
+
+---
+
+# Notifications
+
+Notifications generated when:
+
+- Round Started
+- Reviewer Assigned
+- Review Completed
+- Feedback Available
+- Round Closed
+
+---
+
+# Audit
+
+Every Round records:
+
+- Creator
+- Date
+- Reviews
+- Decisions
+- Deliverables
+- Attachments
+- Feedback
+- Approval History
+
+---
+
+# Business Rules
+
+## BR-001
+
+Every Review belongs to exactly one Review Round.
+
+---
+
+## BR-002
+
+Every Feedback Item belongs to exactly one Review Round.
+
+---
+
+## BR-003
+
+Deliverable Versions are associated with the active Review Round.
+
+---
+
+## BR-004
+
+Round numbers are sequential and immutable.
+
+---
+
+## BR-005
+
+Completed Review Rounds cannot be modified.
+
+---
+
+## BR-006
+
+Minor Fix does not create a new Review Round unless configured by Workflow.
+
+---
+
+## BR-007
+
+Major Fix always creates a new Review Round.
+
+---
+
+## BR-008
+
+Review Round history must never be deleted.
+
+---
+
+# Suggested Data Model
+
+| Field | Description |
+|------|-------------|
+| ReviewRoundId | Primary Key |
+| TaskId | Parent Task |
+| RoundNumber | Sequential Number |
+| Status | Active / Completed |
+| Decision | Approved / Minor Fix / Major Fix |
+| StartedOn | Start Date |
+| CompletedOn | Completion Date |
+| CreatedBy | User |
+| Notes | Optional Summary |
+
+---
+
+# Reporting
+
+Typical reports include:
+
+- Average Review Rounds
+- First Pass Approval Rate
+- Review Round Duration
+- Client Revision Statistics
+- Rework Percentage
+- Review Efficiency
+- Asset Approval Trend
+
+---
+
+# Future Enhancements
+
+Future releases may include:
+
+- Side-by-side version comparison
+- AI change detection
+- AI review summaries
+- Automatic review checklists
+- Visual diff viewer
+- Video frame comparison
+- Round health score
+
+---
+
+# Design Principles
+
+The Review Round module follows these principles:
+
+- Review Rounds represent production iterations.
+- Every review artifact belongs to a Review Round.
+- History is immutable.
+- Round numbering is sequential.
+- Deliverables, Feedback, Reviews and SubTasks remain fully traceable.
+- Review Rounds provide complete production visibility.
+
+---
+
+# Related Documents
+
+- ReviewWorkflow.md
+- FeedbackWorkflow.md
+- Workflow.md
+- DeliverableManagement.md
+- Task.md
+- SubTask.md
+
+---
+
+# Revision History
+
+| Version | Date | Author | Description |
+|----------|------|--------|-------------|
+| 1.0 | TBD | Project Team | Initial Review Round specification |
