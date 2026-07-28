@@ -7,6 +7,10 @@
 
 ---
 
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/29d7bfca-d0c4-4b13-81b3-2e55e82f8be5" />
+
+
 # Purpose
 
 The Executive Dashboard provides a **high-level, real-time overview** of the organization's operational, financial, delivery, and resource performance.
