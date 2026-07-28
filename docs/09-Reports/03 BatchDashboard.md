@@ -16,6 +16,7 @@ A batch represents a logical collection of work items, assets, or deliverables w
 It serves as the day-to-day operational dashboard for production teams.
 
 ---
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/adb6629f-28cb-4d6c-8c55-f4e0f3951beb" />
 
 # Objectives
 
