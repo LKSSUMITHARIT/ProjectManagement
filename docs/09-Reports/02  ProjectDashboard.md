@@ -17,6 +17,9 @@ Unlike the Executive Dashboard, which focuses on organization-wide KPIs, the Pro
 
 ---
 
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/f8edb7b3-009f-438f-a17d-921fff48f5ac" />
+
+
 # Objectives
 
 The dashboard enables users to:
