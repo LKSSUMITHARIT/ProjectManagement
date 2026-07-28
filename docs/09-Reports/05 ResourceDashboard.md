@@ -16,6 +16,7 @@ It enables Resource Managers to make informed staffing decisions, optimize utili
 Unlike the Project Dashboard, which focuses on project execution, the Resource Dashboard focuses on the organization's most valuable asset—its people.
 
 ---
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/96aefffc-079d-438e-8709-d5ea40ad9c20" />
 
 # Objectives
 
