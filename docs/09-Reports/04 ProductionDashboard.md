@@ -16,6 +16,8 @@ It is designed to help production managers monitor workloads, identify bottlenec
 Unlike the Project Dashboard, which focuses on a single project, the Production Dashboard provides a **cross-project operational perspective**.
 
 ---
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/a6bc1d07-c494-4313-8c11-1ce46f4b263a" />
+
 
 # Objectives
 
